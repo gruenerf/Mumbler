@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post_Story extends Model {
+class PostStory extends Model {
 
 	/**
 	 * The database table used by the model.

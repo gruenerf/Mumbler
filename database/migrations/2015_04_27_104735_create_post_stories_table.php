@@ -12,7 +12,7 @@ class CreatePostStoriesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('post__stories', function(Blueprint $table)
+		Schema::create('post_stories', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
@@ -30,7 +30,7 @@ class CreatePostStoriesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('post__stories');
+		Schema::drop('post_stories');
 	}
 
 }
