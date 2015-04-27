@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePostsStoriesTable extends Migration {
+class CreatePostStoriesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,14 +12,14 @@ class CreatePostsStoriesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('posts_stories', function(Blueprint $table)
+		Schema::create('post__stories', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->timestamps();
 			$table->integer('post_id')->unsigned();
 			$table->integer('story_id')->unsigned();
-			$table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');;
-			$table->foreign('story_id')->references('id')->on('stories')->onDelete('cascade');;
+			$table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+			$table->foreign('story_id')->references('id')->on('stories')->onDelete('cascade');
 		});
 	}
 
@@ -30,7 +30,7 @@ class CreatePostsStoriesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('posts_stories');
+		Schema::drop('post__stories');
 	}
 
 }

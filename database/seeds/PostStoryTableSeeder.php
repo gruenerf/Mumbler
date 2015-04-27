@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Post_Story;
 
 class PostStoryTableSeeder extends Seeder
 {
@@ -8,16 +9,17 @@ class PostStoryTableSeeder extends Seeder
 	public function run()
 	{
 		// Uncomment the below to wipe the table clean before populating
-		DB::table('posts_stories')->delete();
+		DB::table('post_stories')->delete();
 
-		$posts_stories = array(
-			['post_id' => '1', 'story_id' => '1'],
-			['post_id' => '2', 'story_id' => '2'],
-			['post_id' => '3', 'story_id' => '3']
-		);
-
-		//// Uncomment the below to run the seeder
-		DB::table('posts_stories')->insert($posts_stories);
+		Post_Story::create(['1','1']);
+		Post_Story::create(['1','2']);
+		Post_Story::create(['1','3']);
+		Post_Story::create(['2','1']);
+		Post_Story::create(['2','2']);
+		Post_Story::create(['2','3']);
+		Post_Story::create(['3','1']);
+		Post_Story::create(['3','2']);
+		Post_Story::create(['3','3']);
 	}
 
 }
