@@ -11,15 +11,15 @@ class PostStoryTableSeeder extends Seeder
 		// Uncomment the below to wipe the table clean before populating
 		DB::table('post_stories')->delete();
 
-		PostStory::create(['1','1']);
-		PostStory::create(['1','2']);
-		PostStory::create(['1','3']);
-		PostStory::create(['2','1']);
-		PostStory::create(['2','2']);
-		PostStory::create(['2','3']);
-		PostStory::create(['3','1']);
-		PostStory::create(['3','2']);
-		PostStory::create(['3','3']);
+		PostStory::create(['post_id' => '1','story_id' => '3']);
+		PostStory::create(['post_id' => '1','story_id' => '1']);
+		PostStory::create(['post_id' => '1','story_id' => '2']);
+		PostStory::create(['post_id' => '2','story_id' => '1']);
+		PostStory::create(['post_id' => '2','story_id' => '2']);
+		PostStory::create(['post_id' => '2','story_id' => '3']);
+		PostStory::create(['post_id' => '3','story_id' => '1']);
+		PostStory::create(['post_id' => '3','story_id' => '2']);
+		PostStory::create(['post_id' => '3','story_id' => '3']);
 	}
 
 }
