@@ -2,19 +2,20 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model {
+class Story extends Model {
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'posts';
+	protected $table = 'stories';
 
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['title', 'user_id', 'media_content', 'hashtag', 'text'];
+	protected $fillable = ['title', 'user_id'];
+
 }
