@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\User;
 
 class UserTableSeeder extends Seeder {
 
@@ -9,14 +10,10 @@ class UserTableSeeder extends Seeder {
 		// Uncomment the below to wipe the table clean before populating
 		DB::table('users')->delete();
 
-		$users = array(
-			[1, 'name' => 'User 1', 'email' => 'asdasdasd@asdasd.com', 'password' => 'asdasdasdasd'],
-			[2, 'name' => 'User 2', 'email' => 'asdasdasd@asdasd.com', 'password' => 'asdasdasdasd'],
-			[3, 'name' => 'User 3', 'email' => 'asdasdasd@asdasd.com', 'password' => 'asdasdasdasd']
-		);
+		User::create(['name' => 'User 1', 'email' => 'asdasdasd@asdasd.com', 'password' => 'asdasdasdasd']);
+		User::create(['name' => 'User 2', 'email' => 'asdafddfdsd@asdasd.com', 'password' => 'asdasdasdasd']);
+		User::create(['name' => 'User 3', 'email' => 'asdasdasasddsasd@asdasd.com', 'password' => 'asdasdasdasd']);
 
-		// Uncomment the below to run the seeder
-		DB::table('users')->insert($users);
 	}
 
 }

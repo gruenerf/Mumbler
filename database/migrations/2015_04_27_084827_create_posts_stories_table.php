@@ -18,8 +18,8 @@ class CreatePostsStoriesTable extends Migration {
 			$table->timestamps();
 			$table->integer('post_id')->unsigned();
 			$table->integer('story_id')->unsigned();
-			$table->foreign('post_id')->references('id')->on('posts');
-			$table->foreign('story_id')->references('id')->on('stories');
+			$table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');;
+			$table->foreign('story_id')->references('id')->on('stories')->onDelete('cascade');;
 		});
 	}
 
@@ -30,7 +30,7 @@ class CreatePostsStoriesTable extends Migration {
 	 */
 	public function down()
 	{
-		//
+		Schema::drop('posts_stories');
 	}
 
 }
