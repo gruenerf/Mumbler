@@ -46,4 +46,14 @@ class Post extends Model
 		return $this->belongsTo('App\User');
 	}
 
+	/**
+	 * Gets all stories associated with post
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function stories()
+	{
+		return $this->belongsToMany('App\Story');
+	}
+
 }

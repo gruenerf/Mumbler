@@ -9,7 +9,7 @@ class PostStory extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'post_stories';
+	protected $table = 'post_story';
 
 	/**
 	 * The attributes that are mass assignable.

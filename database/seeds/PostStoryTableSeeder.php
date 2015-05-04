@@ -9,7 +9,7 @@ class PostStoryTableSeeder extends Seeder
 	public function run()
 	{
 		// Uncomment the below to wipe the table clean before populating
-		DB::table('post_stories')->delete();
+		DB::table('post_story')->delete();
 
 		PostStory::create(['post_id' => '1','story_id' => '3']);
 		PostStory::create(['post_id' => '1','story_id' => '1']);
