@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model {
+class Post extends Model
+{
 
 	/**
 	 * The database table used by the model.
@@ -16,5 +17,33 @@ class Post extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['title', 'user_id', 'media_content', 'hashtag', 'text'];
+	protected $fillable = ['title', 'media_content', 'hashtag', 'text'];
+
+	/**
+	 * The attributes excluded from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	protected $hidden = ['user_id'];
+
+	/**
+	 * Set the user_id attribute
+	 *
+	 * @param $id
+	 */
+	public function setUserIdAttribute($id)
+	{
+		$this->attributes['user_id'] = $id;
+	}
+
+	/**
+	 * A post belongs to a user.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function user()
+	{
+		return $this->belongsTo('App\User');
+	}
+
 }
