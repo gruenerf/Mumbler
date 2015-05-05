@@ -13,6 +13,8 @@
 
 Route::get('/', 'WelcomeController@index');
 
+# "home" is where we'll be sent upon successfull login. If we wish to change
+# the redirect path upon login go into the AuthController and set up: protected $redirectTo = "wherever"
 Route::get('home', 'HomeController@index');
 
 Route::controllers([
