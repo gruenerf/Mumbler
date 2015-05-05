@@ -1,7 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-use Auth;
-
 class HomeController extends Controller {
 
 	/*
@@ -23,9 +21,6 @@ class HomeController extends Controller {
 	public function __construct()
 	{
 		$this->middleware('auth');
-
-		# ["except" => "index"]
-		# ["only" => "index"]
 	}
 
 	/**
@@ -35,16 +30,7 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-
-		// # redirect if not logged in
-		// if (Auth::guest()) {
-		// 	return redirect("somewhere");
-		// }
-
-
-		$user =  Auth::user();
-
-		return view('home')->with("user", $user);
+		return view('home');
 	}
 
 }
