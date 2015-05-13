@@ -4,7 +4,7 @@ use App\Http\Requests\Request;
 use App\Post;
 use Auth;
 
-class PostRequest extends Request
+class SearchRequest extends Request
 {
 
 	/**
@@ -25,9 +25,7 @@ class PostRequest extends Request
 	public function rules()
 	{
 		return [
-			'media_content' => 'required|mimes:bmp,jpg,png,gif,mp4',
-			'text' => 'required',
-			'hashtag' => 'required|min:3'
+			'term' => 'required'
 		];
 	}
 

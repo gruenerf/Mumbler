@@ -2,17 +2,21 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SearchRequest;
 
 use App\Post;
 
 class SearchController extends Controller
 {
 
-	public function show($term)
+	// TODO make it possible that term can be passed by url parameter
+	public function show(SearchRequest $request)
 	{
-		$postArray = Post::where('hashtag', '=', $term)->get();
+		$term = $request->term;
+		$postArray = Post::where('hashtag', 'LIKE', '%'.$term.'%')->orWhere('text', 'LIKE', '%'.$term.'%')->get();
 
-		return view('hashtag.show')->with('postArray' , $postArray);
+		dd($postArray);
+		return $postArray;
 	}
 
 }

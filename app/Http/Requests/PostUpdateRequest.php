@@ -4,8 +4,7 @@ use App\Http\Requests\Request;
 use App\Post;
 use Auth;
 
-class PostRequest extends Request
-{
+class PostUpdateRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -13,7 +12,10 @@ class PostRequest extends Request
 	 */
 	public function authorize()
 	{
-		return true;
+		$postId = $this->route('post');
+
+		return Post::where('id', $postId)
+			->where('user_id', Auth::id())->exists();
 	}
 
 
@@ -25,7 +27,7 @@ class PostRequest extends Request
 	public function rules()
 	{
 		return [
-			'media_content' => 'required|mimes:bmp,jpg,png,gif,mp4',
+			'media_content' => 'required',
 			'text' => 'required',
 			'hashtag' => 'required|min:3'
 		];

@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 
 use App\Post;
 use Illuminate\Http\Request;
@@ -11,16 +12,18 @@ class HashtagController extends Controller
 
 	public function index()
 	{
-		$hashtagArray = Post::select('hashtag')->groupBy('hashtag')->get()->toArray();
 
-		return view('hashtag.index')->with('hashtagArray' , $hashtagArray);
 	}
 
 	public function show($hashtag)
 	{
-		$postArray = Post::where('hashtag', '=', $hashtag)->get();
+		$postArray = Post::where('hashtag', '=', $hashtag)->paginate(5);
 
-		return view('hashtag.show')->with('postArray' , $postArray);
+		if(Input::get('page')){
+			return $postArray;
+		}else{
+			return view('hashtag.show')->with('postArray' , $postArray);
+		}
 	}
 
 }

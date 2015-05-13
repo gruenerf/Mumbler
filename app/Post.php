@@ -17,7 +17,7 @@ class Post extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['title', 'media_content', 'hashtag', 'text'];
+	protected $fillable = ['media_content', 'hashtag', 'text'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.

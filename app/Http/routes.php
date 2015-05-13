@@ -11,20 +11,22 @@
 |
 */
 
-Route::get('/', 'HashtagController@index');
+Route::get('/', 'WelcomeController@index');
+Route::get('home', 'WelcomeController@index');
 
 Route::resource('post', 'PostController');
+Route::get('post/user/{id}', 'PostController');
 
-Route::get('hashtag', 'HashtagController@index');
+Route::get('hashtag', 'WelcomeController@index');
 Route::get('hashtag/{hashtag}', 'HashtagController@show');
+
+Route::get('search', 'SearchController@show');
 
 Route::get('profile/{username}', 'UserController@show');
 
 /*Route::get('story', 'StoryController@index');
 Route::get('story/create', 'StoryController@create');
 Route::get('story/{id}', 'StoryController@show');*/
-
-Route::get('search/{term}', 'SearchController@show');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

@@ -1,16 +1,11 @@
 <div class="form-group">
-   {!! Form::label('title', 'Title:') !!}
-   {!! Form::text('title', null, ['class' => 'form-control']) !!}
-</div>
-
-<div class="form-group">
    {!! Form::label('text', 'Text:') !!}
    {!! Form::textarea('text', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-   {!! Form::label('media_content', 'Mediacontent:') !!}
-   {!! Form::text('media_content', null, ['class' => 'form-control']) !!}
+   {!! Form::label('media_content', 'Mediacontent ( Filetypes: mp4,jpeg,png,bmp,gif ):') !!}
+   {!! Form::file('media_content', ['class' => 'form-control']); !!}
 </div>
 
 <div class="form-group">

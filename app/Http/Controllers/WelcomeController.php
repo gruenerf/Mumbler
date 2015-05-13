@@ -1,5 +1,12 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use App\Post;
+use Illuminate\Http\Request;
+
+
 class WelcomeController extends Controller {
 
 	/*
@@ -18,7 +25,7 @@ class WelcomeController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('guest');
+		//TODO: Uncomment this if welcome screen should only be shown to loggedout users $this->middleware('guest');
 	}
 
 	/**
@@ -28,7 +35,9 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('page.welcome');
+		$hashtagArray = Post::select('hashtag')->groupBy('hashtag')->paginate(5);
+
+		return view('page.welcome')->with('hashtagArray', $hashtagArray);
 	}
 
 }

@@ -16,7 +16,6 @@ class CreatePostsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('title');
 			$table->string('media_content');
 			$table->string('hashtag');
 			$table->string('text');
