@@ -20,7 +20,7 @@ Route::get('post/user/{id}', 'PostController');
 Route::get('hashtag', 'WelcomeController@index');
 Route::get('hashtag/{hashtag}', 'HashtagController@show');
 
-Route::get('search', 'SearchController@show');
+Route::post('search', 'SearchController@show');
 
 Route::get('profile/{username}', 'UserController@show');
 

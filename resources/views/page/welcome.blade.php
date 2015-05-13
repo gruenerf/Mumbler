@@ -18,7 +18,7 @@
 
         {!! Form::open(['action' => 'SearchController@show']) !!}
            {!! Form::label('text', 'Search:') !!}
-           {!! Form::text('text', null, ['class' => 'form-control']) !!}
+           {!! Form::text('term', null, ['class' => 'form-control']) !!}
            {!! Form::submit('search', ['name' => 'submit', 'class' => 'btn btn-primary form-control'])!!}
         {!! Form::close() !!}
 @stop
