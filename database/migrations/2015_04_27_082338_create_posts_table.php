@@ -16,11 +16,14 @@ class CreatePostsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->timestamps();
-			$table->string('media_content');
 			$table->string('hashtag');
 			$table->string('text');
+			$table->integer('media_content_id')->unsigned();
+			$table->foreign('media_content_id')
+				->references('id')
+				->on('media_contents')
+				->onDelete('cascade');
 			$table->integer('user_id')->unsigned();
-
 			$table->foreign('user_id')
 				->references('id')
 				->on('users')

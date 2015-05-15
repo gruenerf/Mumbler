@@ -2,12 +2,14 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\MediaContent;
 use App\Post;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\PostUpdateRequest;
 use Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class PostController extends Controller {
 
@@ -70,7 +72,21 @@ class PostController extends Controller {
 
 				if ( $request->file('media_content')->move("uploads", $fileName) )
 				{
-					$post->media_content = 'uploads/'.$fileName;
+					// Make new MediaContent
+					$media_content = new MediaContent();
+					$media_content->src = 'uploads/'.$fileName;
+
+					// Define the type of the content
+					if($extension === 'mp4'){
+						$media_content->setType('video');
+					}else{
+						$media_content->setType('image');
+					}
+
+					$media_content->save();
+
+					// Save MediaContent id in post
+					$post->setMediaContentId($media_content->id);
 				}
 			}
 		}
@@ -80,6 +96,8 @@ class PostController extends Controller {
 		$post->setUserIdAttribute(Auth::user()->id);
 
 		$post->save();
+
+		return redirect()->route('post.index');
 	}
 
 	/**

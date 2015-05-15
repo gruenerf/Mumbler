@@ -17,7 +17,7 @@ class Post extends Model
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['media_content', 'hashtag', 'text'];
+	protected $fillable = ['hashtag', 'text'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -34,6 +34,16 @@ class Post extends Model
 	public function setUserIdAttribute($id)
 	{
 		$this->attributes['user_id'] = $id;
+	}
+
+	/**
+	 * Set Media Content id
+	 *
+	 * @param $id
+	 */
+	public function setMediaContentId($id)
+	{
+		$this->attributes['media_content_id'] = $id;
 	}
 
 	/**
@@ -54,6 +64,16 @@ class Post extends Model
 	public function stories()
 	{
 		return $this->belongsToMany('App\Story');
+	}
+
+	/**
+	 * A User has MediaContent
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function mediacontent()
+	{
+		return $this->hasOne('App\MediaContent','id', 'media_content_id');
 	}
 
 }

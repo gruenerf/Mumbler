@@ -11,18 +11,23 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', array('as' => 'home', 'uses' => 'WelcomeController@index'));
 Route::get('home', 'WelcomeController@index');
 
 Route::resource('post', 'PostController');
-Route::get('post/user/{id}', 'PostController');
+//Route::get('post/user/{id}', 'PostController');
 
-Route::get('hashtag', 'WelcomeController@index');
+Route::get('hashtag', function(){
+	return redirect()->route('home');
+});
 Route::get('hashtag/{hashtag}', 'HashtagController@show');
 
-Route::post('search', 'SearchController@show');
+Route::get('search/{term}', 'SearchController@show');
+Route::get('search', function(){
+	return redirect()->route('home');
+});
 
-Route::get('profile/{username}', 'UserController@show');
+//Route::get('profile/{username}', 'UserController@show');
 
 /*Route::get('story', 'StoryController@index');
 Route::get('story/create', 'StoryController@create');

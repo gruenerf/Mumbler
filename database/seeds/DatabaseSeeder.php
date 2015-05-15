@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+		$this->call('MediaContentTableSeeder');
 		$this->call('UserTableSeeder');
 		$this->call('StoryTableSeeder');
 		$this->call('PostTableSeeder');

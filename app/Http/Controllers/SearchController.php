@@ -5,19 +5,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SearchRequest;
 
 use App\Post;
+use Illuminate\Support\Facades\Input;
 
 class SearchController extends Controller
 {
 
 	// TODO make it possible that term can be passed by url parameter
-	public function show(SearchRequest $request)
+	public function show($term)
 	{
+		$postArray = Post::where('hashtag', 'LIKE', '%'.$term.'%')->orWhere('text', 'LIKE', '%'.$term.'%')->paginate(1);
 
-		$term = $request->term;
-		$postArray = Post::where('hashtag', 'LIKE', '%'.$term.'%')->orWhere('text', 'LIKE', '%'.$term.'%')->get();
-
-		dd($postArray);
-		return $postArray;
+		if(Input::get('page')){
+			return $postArray;
+		}else{
+			return view('search.show', array('postArray' => $postArray, 'term' => $term));
+		}
 	}
 
 }

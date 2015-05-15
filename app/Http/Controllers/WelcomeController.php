@@ -31,11 +31,11 @@ class WelcomeController extends Controller {
 	/**
 	 * Show the application welcome screen to the user.
 	 *
-	 * @return Response
+	 * @return $this
 	 */
 	public function index()
 	{
-		$hashtagArray = Post::select('hashtag')->groupBy('hashtag')->paginate(5);
+		$hashtagArray = Post::select('hashtag')->groupBy('hashtag')->take(20)->get();
 
 		return view('page.welcome')->with('hashtagArray', $hashtagArray);
 	}

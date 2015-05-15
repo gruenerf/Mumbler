@@ -1,17 +1,105 @@
-.content{
-	width: 1000px;
+@color_light: #02A0A4;
+@color_dark: #007982;
+
+@import "app";
+
+.navbar {
+
+	&.navbar-default {
+		background-color: #fff;
+		border-color: #fff;
+		border-top: 0;
+	}
+
+	.navbar-right {
+		float: right !important;
+
+		li > a {
+			text-align: right;
+		}
+	}
+
+	.container-fluid .navbar-brand {
+		padding: 0;
+		margin-left: 20px;
+
+		#logo {
+			max-width: 120px;
+			z-index: 99999999;
+		}
+	}
+
+	#bs-example-navbar-collapse-1 {
+		border-top: none;
+		box-shadow: none;
+	}
+}
+
+.content {
+	max-width: 600px;
 	margin: 0 auto;
 
-	#hashtags{
+	.headline {
+		font-size: 30px;
+		text-align: center;
+		margin-bottom: 30px;
+
+		&:after {
+			content: ' ';
+			display: block;
+			border: 1px solid #000000;
+			width: 80px;
+			margin: 5px auto 0;
+		}
+	}
+
+	.post{
+		text-align: center;
+		font-size: 16px;
+		padding: 10px;
+		border: 1px dashed black;
+		border-radius: 5px;
+		margin: 20px 0;
+
+		.post_mediacontent{
+			padding-bottom: 10px;
+
+			.post_video{
+				width: 100%;
+			}
+
+			.post_image{
+				width: 100%;
+			}
+		}
+
+		.post_hashtag{
+			margin-top: 5px;
+		}
+	}
+
+	#hashtags {
 		width: 80%;
 		margin: 100px auto 0;
 		text-align: center;
 		max-height: 200px;
 		height: 200px;
 
-		.hashtag{
+		.hashtag {
 			padding: 10px;
 			display: inline-block;
+		}
+	}
+
+	.search_form {
+		width: 60%;
+		margin: 0 auto
+	}
+
+	.btn-primary {
+		color: #fff;
+		&:hover {
+			background: darken(@color_light, 5%);
 		}
 	}
 }

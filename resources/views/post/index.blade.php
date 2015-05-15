@@ -7,7 +7,15 @@
     @if (count($postArray))
         @foreach($postArray as $post)
             <div class="post">
-                <div class="post_mediacontent">{{ $post->media_content }}</div>
+                <div class="post_mediacontent">
+                   @if ($post->mediacontent->type === 'video')
+                       <video class="post_video" preload="metadata" controls>
+                            <source src="{{ asset($post->mediacontent->src)}}" type="video/mp4" />
+                       </video>
+                   @else
+                       <img class="post_image" src="{{ asset($post->mediacontent->src) }}">
+                   @endif
+                    </div>
                 <a href="{{ action('PostController@show', $post->id) }}">
                     <div class="post_headline">{{ $post->title }}</div>
                 </a>

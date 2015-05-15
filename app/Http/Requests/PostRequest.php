@@ -25,7 +25,7 @@ class PostRequest extends Request
 	public function rules()
 	{
 		return [
-			'media_content' => 'required|mimes:bmp,jpg,png,gif,mp4',
+			'media_content' => 'required|mimes:bmp,jpeg,jpg,png,gif,mp4',
 			'text' => 'required',
 			'hashtag' => 'required|min:3'
 		];
