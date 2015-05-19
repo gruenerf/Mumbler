@@ -54,7 +54,7 @@
 
     @yield('header')
 
-    <div class="content" id="content">
+    <div class="container" id="content">
         @yield('content')
     </div>
 
