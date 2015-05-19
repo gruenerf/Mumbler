@@ -19,9 +19,9 @@ class HashtagController extends Controller
 	{
 		$postArray = Post::where('hashtag', '=', $hashtag)->paginate(5);
 
-		if(Input::get('page')){
+		if(Input::get('page')) {
 			return $postArray;
-		}else{
+		} else {
 			return view('hashtag.show')->with('postArray' , $postArray);
 		}
 	}
