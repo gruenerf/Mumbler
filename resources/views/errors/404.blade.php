@@ -4,7 +4,7 @@
 		<?php 
 			header("location:javascript://history.go(-1)");
 			exit;
-			// return redirect()->back();
+			// echo redirect("/");
 		?>
 	</body>
 </html>

@@ -22,16 +22,14 @@ Route::get('hashtag', function(){
 });
 Route::get('hashtag/{hashtag}', 'HashtagController@show');
 
+Route::resource('story', 'StoryController');
+
 Route::get('search/{term}', 'SearchController@show');
 Route::get('search', function(){
 	return redirect()->route('home');
 });
 
 //Route::get('profile/{username}', 'UserController@show');
-
-/*Route::get('story', 'StoryController@index');
-Route::get('story/create', 'StoryController@create');
-Route::get('story/{id}', 'StoryController@show');*/
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
