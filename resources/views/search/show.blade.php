@@ -6,7 +6,7 @@
 
     @if (count($postArray))
         @foreach($postArray as $post)
-            <div class="post">
+           <div class="post">
                <div class="username">{{$post->user->name}}</div>
                <div class="post_mediacontent">
                   @if ($post->mediacontent->type === 'video')
@@ -26,7 +26,7 @@
                </a>
 
                @if (Auth::id() === $post->user_id)
-                    <a href="post/{{$post->id}}/edit">
+                    <a href="../post/{{$post->id}}/edit">
                         <div id="edit" class="btn btn-primary form-control">edit</div>
                     </a>
                     <div id="delete" data-id="{{$post->id}}" class="btn btn-primary form-control">delete</div>
