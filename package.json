@@ -3,5 +3,9 @@
   "devDependencies": {
     "gulp": "^3.8.8",
     "laravel-elixir": "*"
+  },
+  "dependencies": {
+    "lodash": "^3.9.1",
+    "to-fast-properties": "^1.0.1"
   }
 }

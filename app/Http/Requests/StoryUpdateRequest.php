@@ -1,21 +1,23 @@
 <?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
-use App\Post;
+use App\Story;
 use Auth;
 
-class PostRequest extends Request
-{
+class PostUpdateRequest extends Request {
+
 	/**
 	 * Determine if the user is authorized to make this request.
+	 *
 	 * @return bool
 	 */
 	public function authorize()
 	{
-		return true;
-	}
+		$storyId = $this->route('story');
 
-	
+		return Story::where('id', $storyId)
+			->where('user_id', Auth::id())->exists();
+	}
 
 	/**
 	 * Set custom messages for the form validation errors.
@@ -37,8 +39,7 @@ class PostRequest extends Request
 	public function rules()
 	{
 		return [
-			'media_content' => 'required|mimes:bmp,jpeg,jpg,png,gif,mp4',
-			'text' => 'required',
+			'title' => 'required',
 			'hashtag' => 'required|min:3|singleword'
 		];
 	}

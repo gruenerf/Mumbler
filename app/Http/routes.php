@@ -28,6 +28,8 @@ Route::get('hashtag', function(){
 });
 Route::get('hashtag/{hashtag}', 'HashtagController@show');
 
+Route::resource('story', 'StoryController');
+
 // Search
 Route::get('search/{term}', 'SearchController@show');
 Route::get('search', function(){

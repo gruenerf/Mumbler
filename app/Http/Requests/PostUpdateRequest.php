@@ -18,6 +18,17 @@ class PostUpdateRequest extends Request {
 			->where('user_id', Auth::id())->exists();
 	}
 
+	/**
+	 * Set custom messages for the form validation errors.
+	 *
+	 * @return array
+	 */
+	public function messages()
+	{
+		return [
+			'hashtag.singleword' => 'A hashtag has to be written as one word.'
+		];
+	}
 
 	/**
 	 * Get the validation rules that apply to the request.
@@ -29,7 +40,7 @@ class PostUpdateRequest extends Request {
 		return [
 			'media_content' => 'required|mimes:bmp,jpeg,jpg,png,gif,mp4',
 			'text' => 'required',
-			'hashtag' => 'required|min:3'
+			'hashtag' => 'required|min:3|singleword'
 		];
 	}
 
