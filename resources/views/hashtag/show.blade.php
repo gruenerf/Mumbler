@@ -24,7 +24,7 @@
                          <div class="post_hashtag">{{ $post->hashtag }}</div>
                      </a>
 
-                     @if (Auth::id() === $post->user_id)
+                     @if (Auth::id() == $post->user_id)
                           <a href="../post/{{$post->id}}/edit">
                               <div id="edit" class="btn btn-primary form-control">edit</div>
                           </a>
