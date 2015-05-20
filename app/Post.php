@@ -20,13 +20,6 @@ class Post extends Model
 	protected $fillable = ['hashtag', 'text'];
 
 	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = ['user_id'];
-
-	/**
 	 * Set the user_id attribute
 	 *
 	 * @param $id

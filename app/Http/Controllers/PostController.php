@@ -108,7 +108,7 @@ class PostController extends Controller {
 	 */
 	public function show($id)
 	{
-		return Post::find($id);
+		return view('post.show')->with('post' , Post::find($id));
 	}
 
 	/**
@@ -134,6 +134,8 @@ class PostController extends Controller {
 		$post = Post::findOrFail($id);
 
 		$post->update($request->all());
+
+		return redirect()->route('post.index');
 	}
 
 	/**
@@ -149,6 +151,8 @@ class PostController extends Controller {
 		if($post->user_id === Auth::id()){
 			$post->delete();
 		}
+
+		return redirect()->route('post.index');
 	}
 
 }

@@ -11,17 +11,24 @@
 |
 */
 
+// Welcome
 Route::get('/', array('as' => 'home', 'uses' => 'WelcomeController@index'));
 Route::get('home', 'WelcomeController@index');
 
+// Mediacontent
+Route::get('mediacontent/{id}', 'MediaContentController@show');
+
+// Post
 Route::resource('post', 'PostController');
 //Route::get('post/user/{id}', 'PostController');
 
+// Hashtag
 Route::get('hashtag', function(){
 	return redirect()->route('home');
 });
 Route::get('hashtag/{hashtag}', 'HashtagController@show');
 
+// Search
 Route::get('search/{term}', 'SearchController@show');
 Route::get('search', function(){
 	return redirect()->route('home');

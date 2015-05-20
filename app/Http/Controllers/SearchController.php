@@ -9,8 +9,12 @@ use Illuminate\Support\Facades\Input;
 
 class SearchController extends Controller
 {
-
-	// TODO make it possible that term can be passed by url parameter
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param $term
+	 * @return \Illuminate\View\View
+	 */
 	public function show($term)
 	{
 		$postArray = Post::where('hashtag', 'LIKE', '%'.$term.'%')->orWhere('text', 'LIKE', '%'.$term.'%')->paginate(1);

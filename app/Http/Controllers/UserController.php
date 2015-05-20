@@ -10,10 +10,19 @@ use Illuminate\Routing\Route;
 
 class UserController extends Controller {
 
+	/**
+	 *
+	 */
 	public function index(){
 
 	}
 
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param $name
+	 * @return $this
+	 */
 	public function show($name){
 		$user = User::where('name', '=', $name)->first();
 

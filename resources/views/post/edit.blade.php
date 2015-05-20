@@ -4,7 +4,7 @@
 
     <div class="headline">Edit {{ $post->title }}</div>
 
-    {!! Form::model($post,['method' => 'PATCH', 'action' => ['PostController@update', $post->id]]) !!}
+    {!! Form::model($post,['method' => 'PATCH', 'action' => ['PostController@update', $post->id], 'files' => true]) !!}
          @include('post.partials.form', ['submitButton' => 'Update Post'])
     {!! Form::close() !!}
 

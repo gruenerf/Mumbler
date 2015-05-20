@@ -7,6 +7,7 @@
     @if (count($postArray))
         @foreach($postArray as $post)
             <div class="post">
+
                 <div class="post_mediacontent">
                    @if ($post->mediacontent->type === 'video')
                        <video class="post_video" preload="metadata" controls>
@@ -23,8 +24,15 @@
                 <a href="{{ action('HashtagController@show', $post->hashtag) }}">
                     <div class="post_hashtag">{{ $post->hashtag }}</div>
                 </a>
+
+                @if (Auth::id() === $post->user_id)
+                     <a href="post/{{$post->id}}/edit">
+                         <div id="edit" class="btn btn-primary form-control">edit</div>
+                     </a>
+                     <div id="delete" data-id="{{$post->id}}" class="btn btn-primary form-control">delete</div>
+                @endif
             </div>
-        @endforeach
+         @endforeach
     @else
         <div class="post">No posts so far.</div>
     @endif
