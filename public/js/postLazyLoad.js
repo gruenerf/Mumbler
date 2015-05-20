@@ -93,7 +93,7 @@ $.ajaxSetup({
 // Delete button on posts
 $('.content').on('click', '#delete', function () {
 	$.ajax({
-		url: 'post/' + this.dataset.id,
+		url: '../post/' + this.dataset.id,
 		type: 'post',
 		data: {_method: 'delete'},
 		success: function (result) {
