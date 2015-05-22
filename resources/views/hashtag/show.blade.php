@@ -28,7 +28,8 @@
                           <a href="../post/{{$post->id}}/edit">
                               <div id="edit" class="btn btn-primary form-control">edit</div>
                           </a>
-                          <div id="delete" data-id="{{$post->id}}" class="btn btn-primary form-control">delete</div>
+                          <a href="{{ action('PostController@destroy', $post->id ) }}">
+                     <div id="delete" data-id="{{$post->id}}" class="btn btn-primary form-control">delete</div></a>
                      @endif
                  </div>
             @endforeach
