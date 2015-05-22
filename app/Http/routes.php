@@ -36,7 +36,7 @@ Route::get('search', function(){
 	return redirect()->route('home');
 });
 
-//Route::get('profile/{username}', 'UserController@show');
+Route::get('profile/{username}', 'UserController@show');
 
 /*Route::get('story', 'StoryController@index');
 Route::get('story/create', 'StoryController@create');

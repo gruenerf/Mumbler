@@ -44,6 +44,7 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
+								<li><a href="{{ action('UserController@show', Auth::user()->name) }}">Profile</a></li>
 						    	<li><a href="{{ url('/post') }}">Posts</a></li>
 								<li><a href="{{ url('/post/create') }}">New Post</a></li>
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
@@ -58,7 +59,7 @@
 
     @yield('header')
 
-    <div class="content" id="content">
+    <div class="container content" id="content">
     	<!-- Display any flash messages if set -->
     	@if (Session::has("flash_message"))
 		<div class="alert alert-success">

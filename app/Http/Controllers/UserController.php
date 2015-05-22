@@ -25,7 +25,7 @@ class UserController extends Controller {
 	 */
 	public function show($name){
 		$user = User::where('name', '=', $name)->first();
-
+		//$user = "UserSomething";
 		$postArray = $user->posts->toArray();
 
 		return view('user.show')->with(['user' => $user, 'postArray' => $postArray]);

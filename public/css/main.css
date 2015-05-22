@@ -6254,23 +6254,23 @@ label,
   border-top: none;
   box-shadow: none;
 }
-.content {
+.content.container {
   max-width: 600px;
   margin: 0 auto;
 }
-.content .headline {
+.content.container .headline {
   font-size: 30px;
   text-align: center;
   margin-bottom: 30px;
 }
-.content .headline:after {
+.content.container .headline:after {
   content: ' ';
   display: block;
   border: 1px solid #000000;
   width: 80px;
   margin: 5px auto 0;
 }
-.content .post {
+.content.container .post {
   text-align: center;
   font-size: 16px;
   padding: 10px;
@@ -6278,37 +6278,37 @@ label,
   border-radius: 5px;
   margin: 20px 0;
 }
-.content .post .post_mediacontent {
+.content.container .post .post_mediacontent {
   padding-bottom: 10px;
 }
-.content .post .post_mediacontent .post_video {
+.content.container .post .post_mediacontent .post_video {
   width: 100%;
 }
-.content .post .post_mediacontent .post_image {
+.content.container .post .post_mediacontent .post_image {
   width: 100%;
 }
-.content .post .post_hashtag {
+.content.container .post .post_hashtag {
   margin-top: 5px;
 }
-.content #hashtags {
+.content.container #hashtags {
   width: 80%;
   margin: 100px auto 0;
   text-align: center;
   max-height: 200px;
   height: 200px;
 }
-.content #hashtags .hashtag {
+.content.container #hashtags .hashtag {
   padding: 10px;
   display: inline-block;
 }
-.content .search_form {
+.content.container .search_form {
   width: 60%;
   margin: 0 auto;
 }
-.content .btn-primary {
+.content.container .btn-primary {
   color: #fff;
 }
-.content .btn-primary:hover {
+.content.container .btn-primary:hover {
   background: #02878b;
 }
 

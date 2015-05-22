@@ -5,11 +5,18 @@
 	<div class="row">
     @if(count($user))
 
-        <div class="headline col-lg-12"><h1>{{ $user[0]['name'] }} UserName</h1></div>
+        <div class="headline col-lg-12">
+
+        <h1>{{ $user->name }}</h1>
+
+        </div>
         <div class="col-lg-10"><div style="float:right"><button class="btn btn-info dropdown" style="margin: 5px;">Sort By<span class="caret"></span></button><button class="btn btn-info" style="margin: 5px;">Search</button></div></div>
 
         <div class="user_posts col-lg-5">
-        	<h3>My posts</h3><br>
+      
+
+
+        	<h3>Post</h3><br>
     		<p><h4>Lorem</h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
     		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -22,6 +29,7 @@
     		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
     		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
     		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        
         </div>
 
         <div class="user_stories col-lg-5">
