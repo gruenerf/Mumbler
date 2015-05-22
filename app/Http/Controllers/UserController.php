@@ -25,10 +25,15 @@ class UserController extends Controller {
 	 */
 	public function show($name){
 		$user = User::where('name', '=', $name)->first();
-		//$user = "UserSomething";
-		$postArray = $user->posts->toArray();
+		
+		$postArray = $user->posts()->get();
 
 		return view('user.show')->with(['user' => $user, 'postArray' => $postArray]);
 	}
+
+	/*public function view_post($id){
+		$user = User::find($id);
+		$posts = $user->posts()->get();
+	}*/
 
 } 

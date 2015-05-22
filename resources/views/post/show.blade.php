@@ -4,7 +4,7 @@
 
     @if (count($post))
          <div class="post">
-            <div class="username">{{$post->user->name}}</div>
+            <div class="username"><a href="{{ action('UserController@show', $post->user->name )}}">{{$post->user->name}}</a></div>
             <div class="post_mediacontent">
                @if ($post->mediacontent->type === 'video')
                    <video class="post_video" preload="metadata" controls>
