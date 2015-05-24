@@ -18,6 +18,7 @@ class CreateStoriesTable extends Migration {
 			$table->timestamps();
 			$table->integer('user_id')->unsigned();
 			$table->string('title');
+			$table->string('hashtag');
 
 			$table->foreign('user_id')
 				->references('id')
