@@ -21,12 +21,12 @@ class StoryRequest extends Request
 	 *
 	 * @return array
 	 */
-	public function messages()
-	{
-		return [
-			'hashtag.singleword' => 'A hashtag has to be written as one word.'
-		];
-	}
+	// public function messages()
+	// {
+	// 	return [
+	// 		'hashtag.singleword' => 'A hashtag has to be written as one word.'
+	// 	];
+	// }
 
 	/**
 	 * Get the validation rules that apply to the request.
@@ -37,7 +37,6 @@ class StoryRequest extends Request
 	{
 		return [
 			'title' => 'required',
-			'hashtag' => 'required|min:3|singleword'
 		];
 	}
 

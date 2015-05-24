@@ -23,25 +23,22 @@ Route::resource('post', 'PostController');
 //Route::get('post/user/{id}', 'PostController');
 
 // Hashtag
-Route::get('hashtag', function(){
-	return redirect()->route('home');
-});
 Route::get('hashtag/{hashtag}', 'HashtagController@show');
 
+// Story
 Route::resource('story', 'StoryController');
+Route::post("story/addToStory", "StoryController@addToStory");
+
+// User
+Route::get("{username}", "UserController@show");
 
 // Search
 Route::get('search/{term}', 'SearchController@show');
-Route::get('search', function(){
-	return redirect()->route('home');
-});
+
 
 //Route::get('profile/{username}', 'UserController@show');
 
-/*Route::get('story', 'StoryController@index');
-Route::get('story/create', 'StoryController@create');
-Route::get('story/{id}', 'StoryController@show');*/
-
+// Authentication
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',

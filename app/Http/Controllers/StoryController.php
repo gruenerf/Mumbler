@@ -3,7 +3,9 @@
 use App\Http\Requests;
 use App\Http\Requests\StoryRequest;
 use App\Http\Controllers\Controller;
+use App\Post;
 use App\Story;
+use App\PostStory;
 
 use Illuminate\Http\Request;
 
@@ -46,11 +48,12 @@ class StoryController extends Controller
 
 		$story->user_id = \Auth::user()->id;
 		$story->title = $request->title;
+		$story->hashtag = $request->hashtag;
 
 		if ($story->save())
 		{
-			\Session::flash("flash_message", "Story successfully created.");
-			return redirect("/");
+			\Session::flash("flash_message", "Story created.");
+			return redirect()->back();
 		}
 	}
 
@@ -62,7 +65,32 @@ class StoryController extends Controller
 	 */
 	public function show($id)
 	{
-		return Story::find($id);
+		$story = Story::find($id);
+
+		$storyPosts = PostStory::where("story_id", "=", $story->id)->get();
+
+		if (! empty($storyPosts)) {
+
+			$posts = [];
+			foreach($storyPosts as $post) {
+				$posts[] = $post->post_id;
+			}
+
+			$posts = Post::whereIn("id", $posts)->orderBy("updated_at", "DESC")->get();
+
+			if (\Auth::user()) {
+				$usersStories = Story::where("user_id", "=", \Auth::user()->id)->orderBy("id", "DESC")->get();
+			} else {
+				$usersStories = [];
+			}
+			
+			return view("story.show")->with([
+				"posts" => $posts,
+				"usersStories" => $usersStories
+			]);
+		}
+
+		return view("story.show");
 	}
 
 	/**
@@ -95,7 +123,44 @@ class StoryController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		$story = Story::findOrFail($id);
+
+		if($story->user_id === Auth::id())
+		{
+			$story->delete();
+			\Session::flash("flash_message", "Story deleted.");
+		}
+
+		return redirect()->route('story.index');
+	}
+
+
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @return Response
+	 */
+	public function addToStory(Request $request)
+	{
+		$story = Story::findOrFail($request->story);
+		$post = Post::findOrFail($request->postId);
+
+		if ($post->hashtag == $story->hashtag)
+		{
+			$postStory = new PostStory();
+			$postStory->post_id = $request->postId;
+			$postStory->story_id = $request->story;
+
+			if ($postStory->save()) {
+				\Session::flash("flash_message", "Added to story.");
+				return redirect()->back();
+			}
+
+			return redirect()->back();
+		}
+
+		\Session::flash("flash_message", "Post hashtag has to be the same as the story hashtag.");
+		return redirect()->back();
 	}
 
 }

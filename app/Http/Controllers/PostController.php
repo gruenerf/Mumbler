@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\MediaContent;
 use App\Post;
+use App\Story;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\PostUpdateRequest;
 use Auth;
@@ -29,11 +30,17 @@ class PostController extends Controller {
 	public function index()
 	{
 		$postArray = Post::latest()->paginate(5);
-
+		
+		if (\Auth::user()) {
+			$usersStories = Story::where("user_id", "=", \Auth::user()->id)->orderBy("id", "DESC")->get();
+		} else {
+			$usersStories = [];
+		}
+	
 		if(Input::get('page')){
 			return $postArray;
 		}else{
-			return view('post.index')->with('postArray', $postArray);
+			return view('post.index')->with(['posts' => $postArray, "usersStories" => $usersStories]);
 		}
 	}
 
@@ -148,11 +155,12 @@ class PostController extends Controller {
 	{
 		$post = Post::findOrFail($id);
 
-		if($post->user_id === Auth::id()){
+		if($post->user_id == Auth::id())
+		{
 			$post->delete();
+			\Session::flash("flash_message", "Post deleted.");
 		}
-
-		return redirect()->route('post.index');
+		// return redirect()->route('post.index');
 	}
 
 }

@@ -38,7 +38,7 @@ class PostRequest extends Request
 	{
 		return [
 			'media_content' => 'required|mimes:bmp,jpeg,jpg,png,gif,mp4',
-			'text' => 'required',
+			'text' => 'required|max:140',
 			'hashtag' => 'required|min:3|singleword'
 		];
 	}
