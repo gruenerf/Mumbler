@@ -46,13 +46,9 @@
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-<<<<<<< HEAD
 								<li><a href="{{ action('UserController@show', Auth::user()->name) }}">Profile</a></li>
-						    	<li><a href="{{ url('/post') }}">Posts</a></li>
+						    		<li><a href="{{ url('/post') }}">Posts</a></li>
 								<li><a href="{{ url('/post/create') }}">New Post</a></li>
-=======
-						    		
->>>>>>> Robin
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
 						</li>
@@ -64,25 +60,16 @@
 
 	@yield('header')
 
-<<<<<<< HEAD
-    @yield('header')
+
 
     <div class="container content" id="content">
-    	<!-- Display any flash messages if set -->
-    	@if (Session::has("flash_message"))
-		<div class="alert alert-success">
-			{{ Session::get("flash_message") }}
-		</div>
-	@endif
-=======
-	<div class="content" id="content">
-		<!-- Display any flash messages if set -->
-		@if (Session::has("flash_message"))
+	    	<!-- Display any flash messages if set -->
+	    	@if (Session::has("flash_message"))
 			<div class="alert alert-success">
 				{{ Session::get("flash_message") }}
 			</div>
 		@endif
->>>>>>> Robin
+
 
 		@yield('content')
 	</div>
