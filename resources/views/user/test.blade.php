@@ -6,9 +6,8 @@
 		@include("story.partials.stories")
 	@endforeach
 
+	<div class="headline col-lg-12">User: {{ $user->name }}</div>
 	@if(count($user))
-		<div class="headline col-lg-12"><h1>{{ $user->name }}</h1></div>
-
 		<div class="user_posts col-lg-6">
 			<h3 style="text-align: center;">Posts</h3>
 
@@ -35,10 +34,12 @@
 					</a>
 
 					@if (Auth::id() == $post->user_id)
-						<a href="post/{{$post->id}}/edit">
+						<a href="{{ action('PostController@edit', $post->id) }}">
 							<div id="edit" class="btn btn-primary form-control">edit</div>
 						</a>
-						<div id="delete" data-id="{{$post->id}}" class="btn btn-danger form-control">delete</div>
+						<a href="{{ action('PostController@destroy', $post->id) }}">
+							<div id="delete" data-id="{{$post->id}}" class="btn btn-danger form-control">delete</div>
+						</a>
 					@endif
 				</div>
 
@@ -65,28 +66,7 @@
 	@endif
 	
 
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script>
-		/*
-		$('.test').on('click', function(e) {
-			var resource = $(this).data("resource");
-
-			$.ajax({
-				url: '/' + resource,
-				dataType:'json',
-				type: 'post',
-				success:function(data) {
-					console.log(data);
-				}
-			});
-		});
-		*/
-	
-		$('.story-panel-button').on('click', function(e)
-		{
-			var resource = $(this).data("resource");
-			$(".story-panel" + resource).toggle();
-		});
-	</script>
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
+	<script src="{{ asset('js/story-panel.js') }}"></script>
 
 @endsection

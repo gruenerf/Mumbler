@@ -159,8 +159,8 @@ class PostController extends Controller {
 		{
 			$post->delete();
 			\Session::flash("flash_message", "Post deleted.");
+			return redirect()->back();
 		}
-		// return redirect()->route('post.index');
 	}
 
 }

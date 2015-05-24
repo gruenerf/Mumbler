@@ -7,7 +7,7 @@
     @endforeach
 
       @if (count($posts))
-            <div class="headline">{{ $posts[0]->hashtag }}</div>
+            <div class="headline">Hashtag: {{ $posts[0]->hashtag }}</div>
             @foreach($posts as $post)
                  <div class="post">
                      <div class="username"><a href="{{ action('UserController@show', $post->user->name )}}">{{$post->user->name}}</a></div>
@@ -29,12 +29,12 @@
                      </a>
 
                      @if (Auth::id() == $post->user_id)
-                          <a href="../post/{{$post->id}}/edit">
-                              <div id="edit" class="btn btn-primary form-control">edit</div>
-                          </a>
-                          <a href="{{ action('PostController@destroy', $post->id ) }}">
-                     <div id="delete" data-id="{{$post->id}}" class="btn btn-primary form-control">delete</div></a>
-                          <div id="delete" data-id="{{$post->id}}" class="btn btn-danger form-control">delete</div>
+                          <a href="{{ action('PostController@edit', $post->id) }}">
+                                <div id="edit" class="btn btn-primary form-control">edit</div>
+                             </a>
+                             <a href="{{ action('PostController@destroy', $post->id) }}">
+                                  <div id="delete" data-id="{{$post->id}}" class="btn btn-danger form-control">delete</div>
+                            </a>
                      @endif
                  </div>
 
@@ -49,13 +49,7 @@
         @endif
 
 
-    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script>
-        $('.story-panel-button').on('click', function(e)
-        {
-            var resource = $(this).data("resource");
-            $(".story-panel" + resource).toggle();
-        });
-    </script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/story-panel.js') }}"></script>
 
 @stop

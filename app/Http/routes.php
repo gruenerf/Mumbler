@@ -35,9 +35,6 @@ Route::get("{username}", "UserController@show");
 // Search
 Route::get('search/{term}', 'SearchController@show');
 
-
-Route::get('profile/{username}', 'UserController@show');
-
 // Authentication
 Route::controllers([
 	'auth' => 'Auth\AuthController',

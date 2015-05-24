@@ -18,7 +18,7 @@
         @endif
 
         {!! Form::open(['class' => 'search_form']) !!}
-           {!! Form::text('term', null, ['class' => 'form-control', 'id' => 'search_text']) !!}
+           {!! Form::text('term', null, ['class' => 'form-control', 'id' => 'search_text', 'placeholder' => 'Search for posts or stories.']) !!}
            {!! Form::submit('search', ['name' => 'submit', 'id' => 'search_submit', 'class' => 'btn btn-primary form-control'])!!}
         {!! Form::close() !!}
 @stop

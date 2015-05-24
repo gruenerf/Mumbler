@@ -85,6 +85,7 @@ class StoryController extends Controller
 			}
 			
 			return view("story.show")->with([
+				"story" => $story,
 				"posts" => $posts,
 				"usersStories" => $usersStories
 			]);

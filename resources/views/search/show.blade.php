@@ -2,9 +2,15 @@
 
 @section('content')
 
-    <div class="headline">Search: {{ $term }}</div>
+	@foreach($postArray as $post)
+		@include("story.partials.stories")
+	@endforeach
 
+    <div class="headline">Search: {{ $term }}</div>
+<div class="col-lg-6">
+	<h3 style="text-align: center;">Posts</h3>
     @if (count($postArray))
+    	
         @foreach($postArray as $post)
            <div class="post">
                <div class="username"><a href="{{ action('UserController@show', $post->user->name )}}">{{$post->user->name}}</a></div>
@@ -26,16 +32,43 @@
                </a>
 
                @if (Auth::id() == $post->user_id)
-                    <a href="../post/{{$post->id}}/edit">
-                        <div id="edit" class="btn btn-primary form-control">edit</div>
+                   <a href="{{ action('PostController@edit', $post->id ) }}">
+                         <div id="edit" class="btn btn-primary form-control">edit</div>
+                     </a>
+                     <a href="{{ action('PostController@destroy', $post->id ) }}">
+                          <div id="delete" data-id="{{$post->id}}" class="btn btn-danger form-control">delete</div>
                     </a>
-                    <div id="delete" data-id="{{$post->id}}" class="btn btn-primary form-control">delete</div>
                @endif
            </div>
+           @if (count($usersStories))
+		<button type="button" class="story-panel-button btn btn-primary" 
+			style="margin-bottom: 30px;" data-resource="{{$post->id}}">&#43; Add to story
+		</button>
+	@endif
         @endforeach
     @else
         <div class="post">No posts found.</div>
     @endif
+</div>
 
+	<div class=" col-lg-6">
+		<h3 style="text-align: center;">Stories</h3>
+			@if (count($stories))
+                      <div class="post">
+				@foreach($stories as $story)
+					<a href="{{ action('StoryController@show', $story->id) }}">
+						<h4>{{ $story->title }}</h4>
+					</a>
+				@endforeach
+                      </div>
+			@else
+				<div class="post">No stories found.</div>
+			@endif
+		
+	 </div>
+
+
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
+      <script src="{{ asset('js/story-panel.js') }}"></script>
 
 @stop

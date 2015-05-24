@@ -3,13 +3,8 @@
 @section('content')
 	
 	<div class="row">
+    <div class="headline col-lg-12">{{ $user->name }} </div>
     @if(count($user))
-
-        <div class="headline col-lg-12">
-
-        <h1>{{ $user->name }}</h1>
-
-        </div>
         <div class="col-lg-10"><div style="float:right"><button class="btn btn-info dropdown" style="margin: 5px;">Sort By<span class="caret"></span></button><button class="btn btn-info" style="margin: 5px;">Search</button></div></div>
 
         <div class="user_posts col-lg-5">
@@ -37,10 +32,12 @@
                 </a>
 
                 @if (Auth::id() == $post->user_id)
-                     <a href="../post/{{$post->id}}/edit">
-                         <div id="edit" class="btn btn-primary form-control">edit</div>
-                     </a>
-                     <div id="delete" data-id="{{$post->id}}" class="btn btn-primary form-control">delete</div>
+                    <a href="{{ action('PostController@edit', $post->id) }}">
+                     <div id="edit" class="btn btn-primary form-control">edit</div>
+                    </a>
+                    <a href="{{ action('PostController@destroy', $post->id) }}">
+                        <div id="delete" data-id="{{$post->id}}" class="btn btn-danger form-control">delete</div>
+                    </a>
                 @endif
             </div>
     		

@@ -16,7 +16,7 @@ class Story extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['title', 'user_id'];
+	protected $fillable = ['title', 'hashtag', 'user_id'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.

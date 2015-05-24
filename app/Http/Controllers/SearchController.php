@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\SearchRequest;
 
 use App\Post;
+use App\Story;
 use Illuminate\Support\Facades\Input;
 
 class SearchController extends Controller
@@ -17,12 +18,25 @@ class SearchController extends Controller
 	 */
 	public function show($term)
 	{
-		$postArray = Post::where('hashtag', 'LIKE', '%'.$term.'%')->orWhere('text', 'LIKE', '%'.$term.'%')->paginate(1);
+		$postArray = Post::where('hashtag', 'LIKE', '%'.$term.'%')->orWhere('text', 'LIKE', '%'.$term.'%')->paginate(5);
 
-		if(Input::get('page')){
+		$stories = Story::where('hashtag', 'LIKE', '%'.$term.'%')->orWhere('title', 'LIKE', '%'.$term.'%')->paginate(5);
+
+		if (\Auth::user()) {
+			$usersStories = Story::where("user_id", "=", \Auth::user()->id)->orderBy("id", "DESC")->get();
+		} else {
+			$usersStories = [];
+		}
+
+		if (Input::get('page')) {
 			return $postArray;
-		}else{
-			return view('search.show', array('postArray' => $postArray, 'term' => $term));
+		} else {
+			return view('search.show', array(
+				'postArray' => $postArray,
+				'stories' => $stories,
+				'usersStories' => $usersStories,
+				'term' => $term
+			));
 		}
 	}
 

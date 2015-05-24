@@ -1,6 +1,8 @@
 @extends('master')
 
 @section('content')
+	<div class="headline">Story: {{ $story->title }}</div>
+
 	@foreach($posts as $post)
 		@include("story.partials.stories")
 	@endforeach
@@ -8,7 +10,7 @@
 	@if (count($posts))
 		@foreach($posts as $post)
 			<div class="post">
-				<div class="username">{{$post->user->name}}</div>
+				<div class="username"><a href="{{ action('UserController@show', $post->user->name )}}">{{$post->user->name}}</a></div>
 				<div class="post_mediacontent">
 					@if ($post->mediacontent->type === 'video')
 						<video class="post_video" preload="metadata" controls>
@@ -30,10 +32,12 @@
 				</a>
 
 				@if (Auth::id() == $post->user_id)
-					<a href="../post/{{$post->id}}/edit">
+					<a href="{{ action('PostController@edit', $post->id ) }}">
 						<div id="edit" class="btn btn-primary form-control">edit</div>
 					</a>
-					<div id="delete" data-id="{{$post->id}}" class="btn btn-danger form-control">delete</div>
+					<a href="{{ action('PostController@destroy', $post->id ) }}">
+						<div id="delete" data-id="{{$post->id}}" class="btn btn-danger form-control">delete</div>
+					</a>
 				@endif
 			</div>
 
@@ -50,14 +54,7 @@
 		<div class="post">No posts so far.</div>
 	@endif
 
-
-	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-	<script>
-		$('.story-panel-button').on('click', function(e)
-		{
-			var resource = $(this).data("resource");
-			$(".story-panel" + resource).toggle();
-		});
-	</script>
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
+	<script src="{{ asset('js/story-panel.js') }}"></script>
 
 @endsection
