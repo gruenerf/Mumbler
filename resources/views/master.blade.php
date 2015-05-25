@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<meta name="user_id" content="{{ Auth::id() }}" />
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 	<title>Mumbler</title>
 
 	<link href="{{ asset('/css/main.css') }}" rel="stylesheet">
@@ -103,7 +105,8 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script src="{{ asset('js/postLazyLoad.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('js/jquery.min.js') }}"></script>
-    	<script src="{{ asset('js/form.js') }}"></script>
+    <script src="{{ asset('js/form.js') }}"></script>
+    <script src="{{ asset('js/story-panel.js') }}"></script>
 
 	@yield('footer')
 </body>

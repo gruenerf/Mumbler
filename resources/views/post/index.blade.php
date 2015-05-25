@@ -49,9 +49,4 @@
         <div class="post">No posts so far.</div>
     @endif
 
-
-
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/story-panel.js') }}"></script>
-
 @stop

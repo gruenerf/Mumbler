@@ -47,7 +47,7 @@ class UserController extends Controller {
 			
 		$posts = Post::where("user_id", "=", $user->id)->orderBy("id", "DESC")->get();
 
-		return view('user.test')->with([
+		return view('user.show')->with([
 			"user" => $user,
 			"stories" => $stories,
 			"posts" => $posts,

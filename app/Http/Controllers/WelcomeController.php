@@ -24,7 +24,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		$hashtagArray = Post::select('hashtag')->groupBy('hashtag')->take(20)->get();
+		$hashtagArray = Post::select('hashtag')->groupBy('hashtag')->take(8)->get();
 
 		return view('page.welcome')->with('hashtagArray', $hashtagArray);
 	}
