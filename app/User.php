@@ -42,9 +42,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('App\Post');
 	}
 
-	//Todo when stories added uncomment
-	/*public function stories()
+
+	public function stories()
 	{
 		return $this->hasMany('App\Story');
-	}*/
+	}
 }

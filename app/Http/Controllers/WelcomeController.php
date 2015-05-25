@@ -14,7 +14,7 @@ class WelcomeController extends Controller {
 	 */
 	public function __construct()
 	{
-		//TODO: Uncomment this if welcome screen should only be shown to loggedout users $this->middleware('guest');
+
 	}
 
 	/**

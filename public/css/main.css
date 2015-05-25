@@ -6254,6 +6254,34 @@ label,
   border-top: none;
   box-shadow: none;
 }
+div.enabled:hover {
+  background-color: #ddd;
+}
+div.enabled:active {
+  background-color: #ddd;
+}
+#delete,
+#edit,
+#search_submit {
+  margin-top: 5px;
+}
+.panel-form {
+  max-height: 60%;
+  overflow-y: scroll;
+  border-bottom: 1px solid #aaa;
+}
+.panel-header {
+  font-variant: small-caps;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.add-button {
+  display: none;
+  margin-left: 20px;
+}
+.story-delete {
+  display: inline-block;
+}
 .content.container {
   max-width: 600px;
   margin: 0 auto;
@@ -6287,8 +6315,51 @@ label,
 .content.container .post .post_mediacontent .post_image {
   width: 100%;
 }
-.content.container .post .post_hashtag {
+.content.container .post .bottom_content {
+  display: block;
   margin-top: 5px;
+  clear: both;
+}
+.content.container .post .bottom_content .post_hashtag {
+  float: left;
+}
+.content.container .post .bottom_content .story-panel-button {
+  float: right;
+}
+.content.container .post .post_content {
+  display: block;
+  margin-top: 5px;
+  clear: both;
+}
+.content.container .post .top_content {
+  display: inline-block;
+  margin: 5px 0;
+  clear: both;
+  width: 100%;
+}
+.content.container .post .top_content .username {
+  float: left;
+}
+.content.container .post .top_content .date {
+  float: right;
+}
+.content.container .post:after {
+  content: ".";
+  clear: both;
+  display: block;
+  visibility: hidden;
+  height: 0px;
+}
+.content.container .story-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: none;
+  background-color: #F7F7F7;
+  z-index: 100;
+  border: 1px solid #eee;
+  width: 400px;
 }
 .content.container #hashtags {
   width: 80%;

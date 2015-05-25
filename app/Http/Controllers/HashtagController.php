@@ -12,7 +12,7 @@ class HashtagController extends Controller
 {
 
 	/**
-	 * Display the specified resource.
+	 * Shows all Hashtags
 	 *
 	 * @param $hashtag
 	 * @return $this

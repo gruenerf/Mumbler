@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class MediaContentController extends Controller {
 
 	/**
-	 * Display the specified resource.
+	 * Returns the Mediacontent Json
 	 *
 	 * @param $id
 	 * @return \Illuminate\Support\Collection|null|static

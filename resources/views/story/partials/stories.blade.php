@@ -1,11 +1,4 @@
-<div 	style="position: fixed; top: 0; right: 0; 
-		height: 100%; 
-		display: none; 
-		background-color: #F7F7F7; 
-		z-index: 100; 
-		border: 1px solid #eee;
-		width: 400px;"
-	class="story-panel{{$post->id}}">
+<div class="story-panel story-panel{{$post->id}}">
 
 	{!! Form::open(['action' => 'StoryController@addToStory', 'class'=>'panel-form']) !!}
 		<div style="padding: 5px; width:  100%;">

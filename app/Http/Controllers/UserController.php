@@ -17,13 +17,6 @@ class UserController extends Controller {
 		$this->middleware('auth', ['except' => ['index', 'show']]);
 	}
 
-	/**
-	 *
-	 */
-	public function index()
-	{
-		//
-	}
 
 	/**
 	 * Display the specified resource.
@@ -53,6 +46,17 @@ class UserController extends Controller {
 			"posts" => $posts,
 			"usersStories" => $usersStories
 		]);
+	}
+
+	/**
+	 * Returns user for a certain id
+	 * @param $id
+	 * @return \Illuminate\Support\Collection|null|static
+	 */
+	public function getById($id)
+	{
+		$user = User::findOrFail($id);
+		return $user;
 	}
 
 }

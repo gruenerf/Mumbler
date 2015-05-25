@@ -20,7 +20,6 @@ Route::get('mediacontent/{id}', 'MediaContentController@show');
 
 // Post
 Route::resource('post', 'PostController');
-//Route::get('post/user/{id}', 'PostController');
 
 // Hashtag
 Route::get('hashtag/{hashtag}', 'HashtagController@show');
@@ -31,6 +30,7 @@ Route::post("story/addToStory", "StoryController@addToStory");
 
 // User
 Route::get("{username}", "UserController@show");
+Route::get("user/{id}", "UserController@getById");
 
 // Search
 Route::get('search/{term}', 'SearchController@show');
