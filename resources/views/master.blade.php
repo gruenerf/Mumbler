@@ -30,7 +30,7 @@
 			margin-top: 5px;
 		}
 		.panel-form {
-			max-height: 70%;
+			max-height: 60%;
 			overflow-y: scroll;
 			border-bottom: 1px solid #aaa;
 		}
@@ -42,6 +42,9 @@
 		.add-button {
 			display: none;
 			margin-left: 20px;
+		}
+		.story-delete {
+			display: inline-block;
 		}
 	</style>
 </head>
@@ -83,7 +86,6 @@
 	@yield('header')
 
 
-
     <div class="container content" id="content">
 	    	<!-- Display any flash messages if set -->
 	    	@if (Session::has("flash_message"))
@@ -100,6 +102,8 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script src="{{ asset('js/postLazyLoad.js') }}" type="text/javascript"></script>
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
+    	<script src="{{ asset('js/form.js') }}"></script>
 
 	@yield('footer')
 </body>

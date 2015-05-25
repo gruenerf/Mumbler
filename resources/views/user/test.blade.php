@@ -43,7 +43,7 @@
 					@endif
 				</div>
 
-				@if (count($usersStories))
+				@if (Auth::id())
 					<button type="button" class="story-panel-button btn btn-primary" 
 						style="margin-bottom: 30px;" data-resource="{{$post->id}}">&#43; Add to story
 					</button>
@@ -53,15 +53,21 @@
 
 		<div class="user_stories col-lg-6">
 			<h3 style="text-align: center;">Stories</h3>
-			<div class="post">
 			@if(isset($stories))
 				@foreach($stories as $story)
-					<a href="{{ action('StoryController@show', $story->id) }}">
-						<h4>{{ $story->title }}</h4>
-					</a>
+					<div class="post">
+						<a href="{{ action('StoryController@show', $story->id) }}">
+							<h4>{{ $story->title }}</h4>
+						</a>
+
+						@if (Auth::id() == $story->user_id)
+							{!! Form::open(["method" => "DELETE", "route" => ["story.destroy", $story->id]   ]) !!}
+								{!! Form::submit("delete", ["class" => "btn btn-danger story-delete"]) !!}
+							{!! Form::close() !!}
+						@endif
+					</div>
 				@endforeach
 			@endif
-			</div>
 		</div>
 	@endif
 	

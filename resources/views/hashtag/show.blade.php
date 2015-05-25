@@ -38,7 +38,7 @@
                      @endif
                  </div>
 
-                   @if (count($usersStories))
+                  @if (Auth::id())
                      <button type="button" class="story-panel-button btn btn-primary" 
                         style="margin-bottom: 30px;" data-resource="{{$post->id}}">&#43; Add to story
                     </button>

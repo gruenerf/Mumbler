@@ -10,7 +10,7 @@
 
 <div class="form-group">
    {!! Form::label('hashtag', 'Hashtag:') !!}
-   {!! Form::text('hashtag', null, ['class' => 'form-control']) !!}
+   {!! Form::text('hashtag', null, ['class' => 'form-control hashtag']) !!}
 </div>
 
 <div class="form-group">

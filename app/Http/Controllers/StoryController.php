@@ -42,7 +42,7 @@ class StoryController extends Controller
 	 *
 	 * @return Response
 	 */
-	public function store(StoryRequest $request)
+	public function store(Request $request)
 	{
 		$story = new Story();
 
@@ -126,13 +126,13 @@ class StoryController extends Controller
 	{
 		$story = Story::findOrFail($id);
 
-		if($story->user_id === Auth::id())
+		if($story->user_id === \Auth::id())
 		{
 			$story->delete();
 			\Session::flash("flash_message", "Story deleted.");
 		}
 
-		return redirect()->route('story.index');
+		return redirect()->back();
 	}
 
 

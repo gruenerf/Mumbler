@@ -26,9 +26,9 @@
                  <a href="{{ action('PostController@edit', $post->id ) }}">
                          <div id="edit" class="btn btn-primary form-control">edit</div>
                      </a>
-                     <a href="{{ action('PostController@destroy', $post->id ) }}">
-                          <div id="delete" data-id="{{$post->id}}" class="btn btn-danger form-control">delete</div>
-                    </a>
+                  {!! Form::open(["method" => "DELETE", "route" => ["post.destroy", $post->id]   ]) !!}
+                     {!! Form::submit("delete", ["class" => "btn btn-danger form-control story-delete"]) !!}
+                  {!! Form::close() !!}
             @endif
         </div>
    @else

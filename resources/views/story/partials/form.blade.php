@@ -5,7 +5,7 @@
 
 <div class="form-group">
 	{!! Form::label('hashtag', 'Hashtag:') !!}
-	<input name="hashtag" value="{{ $post->hashtag }}" class="form-control">
+	<input name="hashtag" value="{{ $post->hashtag }}" class="form-control hashtag">
 </div>
 
 <div class="form-group">
