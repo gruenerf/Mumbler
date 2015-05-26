@@ -1,10 +1,13 @@
 $('.content').on('click', '.story-panel-button', function(e)
 {
-	console.log('asdas');
 	var resource = $(this).data("resource");
 	$(".story-panel" + resource).toggle();
 });
 
+$('.story-panel-close').on('click', function(e)
+{
+	$(".sp").css("display", "none");
+});
 
 $('input[type="radio"]').on('click', function(e)
 {

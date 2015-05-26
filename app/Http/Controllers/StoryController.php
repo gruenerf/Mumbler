@@ -52,7 +52,18 @@ class StoryController extends Controller
 
 		if ($story->save())
 		{
-			\Session::flash("flash_message", "Story created.");
+			# add the first post to the story as well
+			$postStory = new PostStory();
+			$postStory->story_id = $story->id;
+			$postStory->post_id = $request->postId;
+
+			if ($postStory->save())
+			{
+				\Session::flash("flash_message", "Story created: " . $story->title);
+				return redirect()->back();
+			}
+
+			\Session::flash("flash_message", "Story created: " . $story->title);
 			return redirect()->back();
 		}
 	}
