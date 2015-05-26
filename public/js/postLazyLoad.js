@@ -87,14 +87,14 @@ function lazyLoad(page) {
 												// Get all post data
 												string += "</div>"
 												+ "<div class='post_content'>" + this.current_data2.text + "</div>"
-												+ "<div class='bottom_content'><a href='/hashtag/" + this.current_data2.hashtag + "'>"
+												+ "<div class='bottom_content'><a href='hashtag/" + this.current_data2.hashtag + "'>"
 												+ "<div class='post_hashtag'>" + this.current_data2.hashtag + "</div>"
 												+ "</a>";
 
 												// If the post belongs to current user show edit and delete buttons
 												if (this.current_data2.user_id == $('meta[name="user_id"]').attr('content')) {
 
-													string += "<a href='../post/" + this.current_data2.id + "/edit'>"
+													string += "<a href='post/" + this.current_data2.id + "/edit'>"
 													+ "<div id='edit' class='btn btn-primary form-control'>edit</div>"
 													+ "</a>"
 													+ "<div id='delete' data-id='" + this.current_data2.id + "' class=' btn btn-primary form-control'>delete</div>";
@@ -139,7 +139,7 @@ $.ajaxSetup({
 // Delete button on posts
 $('.content').on('click', '#delete', function () {
 	$.ajax({
-		url: '../post/' + this.dataset.id,
+		url: 'post/' + this.dataset.id,
 		type: 'post',
 		data: {_method: 'delete'},
 		success: function (result) {
