@@ -3,6 +3,7 @@
 @section('content')
 	<div class="headline">Story: {{ $story->title }}</div>
 
+
 	@foreach($posts as $post)
 		@include("story.partials.stories")
 	@endforeach

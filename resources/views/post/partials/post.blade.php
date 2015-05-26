@@ -31,20 +31,20 @@
             <div class="post_hashtag">{{ $post->hashtag }}</div>
         </a>
 
-        @if (Auth::id() == $post->user_id)
-             <a href="{{ action('PostController@edit', $post->id ) }}">
-                     <div id="edit" class="btn btn-primary form-control">edit</div>
-                 </a>
-              {!! Form::open(["method" => "DELETE", "route" => ["post.destroy", $post->id]   ]) !!}
-                 {!! Form::submit("delete", ["class" => "btn btn-danger form-control story-delete"]) !!}
-              {!! Form::close() !!}
-        @endif
-
          @if (Auth::id())
              <button type="button" class="story-panel-button btn btn-primary"
              data-resource="{{$post->id}}">&#43; Add to story
             </button>
         @endif
     </div>
+
+    @if (Auth::id() == $post->user_id)
+         <a href="{{ action('PostController@edit', $post->id ) }}">
+                 <div id="edit" class="btn btn-primary form-control">edit</div>
+             </a>
+          {!! Form::open(["method" => "DELETE", "route" => ["post.destroy", $post->id]   ]) !!}
+             {!! Form::submit("delete", ["class" => "btn btn-danger form-control story-delete"]) !!}
+          {!! Form::close() !!}
+    @endif
 
 </div>

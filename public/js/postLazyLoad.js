@@ -110,6 +110,15 @@ function lazyLoad(page) {
 
 												// Output it in the current html
 												content.append(string);
+
+												$.ajax({
+													timeout: 1000,
+													url: "story/storyForm/" + this.current_data2.id
+												})
+													.done(function (data) {
+														content.append(data);
+													});
+
 											});
 									}
 								});

@@ -1,3 +1,4 @@
+@if($usersStories)
 <div class="story-panel story-panel{{$post->id}}">
 
 	{!! Form::open(['action' => 'StoryController@addToStory', 'class'=>'panel-form']) !!}
@@ -40,3 +41,4 @@
 		{!! Form::close() !!}
 	</div>
 </div>
+@endif

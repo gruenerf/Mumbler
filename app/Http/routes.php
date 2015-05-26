@@ -27,6 +27,7 @@ Route::get('hashtag/{hashtag}', 'HashtagController@show');
 // Story
 Route::resource('story', 'StoryController');
 Route::post("story/addToStory", "StoryController@addToStory");
+Route::get("story/storyForm/{id}", "StoryController@getStoryForm");
 
 // User
 Route::get("{username}", "UserController@show");

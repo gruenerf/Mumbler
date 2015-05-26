@@ -58,6 +58,29 @@ class StoryController extends Controller
 	}
 
 	/**
+	 * Returns story form
+	 *
+	 * @param $post_id
+	 * @return $this
+	 */
+	public function getStoryForm($post_id)
+	{
+		$post = Post::findOrFail($post_id);
+
+		if (\Auth::user()) {
+			$usersStories = Story::where("user_id", "=", \Auth::user()->id)->orderBy("id", "DESC")->get();
+		} else {
+			$usersStories = [];
+		}
+
+
+		return view('story.partials.stories')->with([
+			"post" => $post,
+			"usersStories" => $usersStories
+		]);
+	}
+
+	/**
 	 * Display the specified resource.
 	 *
 	 * @param 	int  $id
