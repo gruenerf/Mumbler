@@ -1,6 +1,6 @@
 <div class="form-group">
    {!! Form::label('text', 'Text:') !!}
-   {!! Form::textarea('text', null, ["id" => "text", 'class' => 'form-control text', 'onkeyup' => 'countChar(this)']) !!}
+   {!! Form::textarea('text', null, [ 'class' => 'form-control text', 'onkeyup' => 'countChar(this)']) !!}
    <div id="charNum"></div>
 </div>
 
