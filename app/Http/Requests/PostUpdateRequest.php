@@ -19,18 +19,6 @@ class PostUpdateRequest extends Request {
 	}
 
 	/**
-	 * Set custom messages for the form validation errors.
-	 *
-	 * @return array
-	 */
-	public function messages()
-	{
-		return [
-			'hashtag.singleword' => 'A hashtag has to be written as one word.'
-		];
-	}
-
-	/**
 	 * Get the validation rules that apply to the request.
 	 *
 	 * @return array
@@ -38,9 +26,7 @@ class PostUpdateRequest extends Request {
 	public function rules()
 	{
 		return [
-			'media_content' => 'required|mimes:bmp,jpeg,jpg,png,gif,mp4',
-			'text' => 'required|max:140',
-			'hashtag' => 'required|min:3|singleword'
+			'text' => 'required|max:140'
 		];
 	}
 

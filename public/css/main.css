@@ -6362,8 +6362,9 @@ div.enabled:active {
   width: 400px;
 }
 .content.container #hashtags {
+  overflow: hidden;
   width: 80%;
-  margin: 100px auto 0;
+  margin: 100px auto 20px;
   text-align: center;
   max-height: 200px;
   height: 200px;
