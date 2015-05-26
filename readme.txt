@@ -76,6 +76,8 @@ For the architecture we used MVC.
 We used jQuery because we all had experience with that and it was easier to use with Ajax which we have
 used to provide a better user experience, through lazy loading posts without having to reload the
 entire page. As a templating engine we used the in laravel already included blade.
+Since we think the only thing changing about a post is it´s text, the user only has the possibility to change
+that afterwards. If the hashtag wants to be changed it is considered as a new event and therefore a new post.
 
 
 /***************************/
