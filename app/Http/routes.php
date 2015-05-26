@@ -20,6 +20,7 @@ Route::get('mediacontent/{id}', 'MediaContentController@show');
 
 // Post
 Route::resource('post', 'PostController');
+Route::get("post/postAjax/{id}", "PostController@getFullPost");
 
 // Hashtag
 Route::get('hashtag/{hashtag}', 'HashtagController@show');
