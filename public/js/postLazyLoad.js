@@ -91,20 +91,21 @@ function lazyLoad(page) {
 												+ "<div class='post_hashtag'>" + this.current_data2.hashtag + "</div>"
 												+ "</a>";
 
+												if ($('meta[name="user_id"]').attr('content')) {
+													string += "<button type='button' class='story-panel-button btn btn-primary'" +
+													"data-resource='" + this.current_data2.id + "'>&#43; Add to story" +
+													"</button>";
+												}
+
 												// If the post belongs to current user show edit and delete buttons
 												if (this.current_data2.user_id == $('meta[name="user_id"]').attr('content')) {
 
 													string += "<a href='post/" + this.current_data2.id + "/edit'>"
 													+ "<div id='edit' class='btn btn-primary form-control'>edit</div>"
 													+ "</a>"
-													+ "<div id='delete' data-id='" + this.current_data2.id + "' class=' btn btn-primary form-control'>delete</div>";
+													+ "<div id='delete' data-id='" + this.current_data2.id + "' class='btn btn-danger form-control'>delete</div>";
 												}
 
-												if ($('meta[name="user_id"]').attr('content')) {
-													string += "<button type='button' class='story-panel-button btn btn-primary'" +
-													"data-resource='" + this.current_data2.id + "'>&#43; Add to story" +
-													"</button>";
-												}
 
 												string += "</div></div>";
 
