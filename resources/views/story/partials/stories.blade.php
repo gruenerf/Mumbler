@@ -1,8 +1,12 @@
 @if($usersStories)
-<div class="story-panel story-panel{{$post->id}}">
+<div class="sp story-panel story-panel{{$post->id}}">
 
 	{!! Form::open(['action' => 'StoryController@addToStory', 'class'=>'panel-form']) !!}
 		<div style="padding: 5px; width:  100%;">
+
+			<div class="story-panel-close btn" style="margin-right: 15px; padding: 10px 12px; position: absolute; top: 0; right: 0;">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true" style="font-size: 25px; display: inline-block; color: #aaa;"></span>
+			</div>
 			
 			<h4 class="panel-header" style="padding-left: 10px;">your stories</h4>
 	
@@ -37,6 +41,7 @@
 	<div style="padding: 10px; height: 100%; background-color: #EAEAEA;">
 	<h4 class="panel-header">create new story</h4>
 		{!! Form::open(['action' => 'StoryController@store']) !!}
+			<input name="postId" type="hidden" value="{{ $post->id }}">
 			@include('story.partials.form', ['submitButton' => 'Create new story'])
 		{!! Form::close() !!}
 	</div>
