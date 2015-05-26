@@ -31,7 +31,7 @@
             <div class="post_hashtag">{{ $post->hashtag }}</div>
         </a>
 
-         @if (Auth::id())
+         @if (Auth::user())
              <button type="button" class="story-panel-button btn btn-primary"
              data-resource="{{$post->id}}">&#43; Add to story
             </button>
